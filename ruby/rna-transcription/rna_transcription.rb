@@ -2,12 +2,13 @@
 class Complement
   VERSION = 3
   def self.of_dna(rna)
-    rna_hash = Hash['G' => 'C', 'C' => 'G', 'T' => 'A', 'A' => 'U']
-    dna = String.new('')
-    rna.each_char do |i|
-      raise ArgumentError unless rna_hash.key? i
-      dna += rna_hash[i]
+    rna_array = Array['G', 'C', 'T', 'A']
+    dna_array = Array['C', 'G', 'A', 'U']
+    (0..rna.length - 1).each do |i|
+      raise ArgumentError unless rna_array.include?(rna[i])
+      index = rna_array.index(rna[i])
+      rna[i] = dna_array[index]
     end
-    dna
+    rna
   end
 end
