@@ -3,11 +3,10 @@ class Complement
   VERSION = 3
   def self.of_dna(rna)
     rna_hash = Hash['G' => 'C', 'C' => 'G', 'T' => 'A', 'A' => 'U']
-    dna = String.new('')
-    rna.each_char do |i|
-      raise ArgumentError unless rna_hash.key? i
-      dna += rna_hash[i]
+    (0..rna.length - 1).each do |i|
+      raise ArgumentError unless rna_hash.key? rna[i]
+      rna[i] = rna_hash[rna[i]]
     end
-    dna
+    rna
   end
 end
