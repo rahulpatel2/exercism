@@ -1,7 +1,8 @@
 # Class For Print Hello World
 class HelloWorld
   def self.hello(name = nil)
-    return 'Hello, World!' if name.nil?
-    return 'Hello, ' + name + '!' unless name.nil?
+    hello_name = 'Hello, World!' if name.nil?
+    hello_name = 'Hello, ' + name + '!' unless name.nil?
+    return hello_name
   end
 end
