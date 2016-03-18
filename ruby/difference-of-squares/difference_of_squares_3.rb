@@ -6,7 +6,11 @@ class Squares
   end
 
   def square_of_sum
-    (1..@num).inject { |a, e| a + e }**2
+    sum = 0
+    (1..@num).each do |i|
+      sum += i
+    end
+    sum**2
   end
 
   def sum_of_squares
@@ -18,7 +22,6 @@ class Squares
   end
 
   def difference
-    return 0 if @num == 0
     square_of_sum - sum_of_squares
   end
 end
