@@ -1,21 +1,19 @@
 # Program to Difference Of Squares
 class Squares
   VERSION = 2
+  attr_accessor :num
   def initialize(num)
     @num = num
   end
 
   def square_of_sum
-    sum = 0
-    (1..@num).each do |i|
-      sum += i
-    end
+    sum = num * (num + 1) / 2
     sum**2
   end
 
   def sum_of_squares
     sq = 0
-    (1..@num).each do |i|
+    (1..num).each do |i|
       sq += i * i
     end
     sq
