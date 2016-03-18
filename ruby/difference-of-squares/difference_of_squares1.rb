@@ -14,7 +14,8 @@ class Squares
   def sum_of_squares
     sq = 0
     (1..num).each do |i|
-      sq += i * i
+      data = i**2
+      sq += data
     end
     sq
   end
