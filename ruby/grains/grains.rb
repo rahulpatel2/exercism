@@ -5,10 +5,6 @@ class Grains
   end
 
   def self.total
-    sum = 0
-    (0..63).each do |i|
-      sum += 2**i
-    end
-    sum
+    2**64 - 1
   end
 end
