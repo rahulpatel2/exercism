@@ -1,14 +1,9 @@
 # Program fro conversation with bob
 class Bob
   def hey(text)
-    if text == text.upcase && text =~ /[a-zA-Z]+/
-      'Whoa, chill out!'
-    elsif text[-1] == '?'
-      'Sure.'
-    elsif text.strip.empty?
-      'Fine. Be that way!'
-    else
-      'Whatever.'
-    end
+    return 'Whoa, chill out!' if text == text.upcase && text =~ /[a-zA-Z]+/
+    return 'Sure.' if text[-1] == '?'
+    return 'Fine. Be that way!' if text.strip.empty?
+    'Whatever.'
   end
 end
