@@ -8,6 +8,10 @@ class Binary
 
   def to_decimal
     array_of_binary_nos = @binary_string
-    (0..array_of_binary_nos.length - 1).inject(0) { |a, e| a += 2**e if array_of_binary_nos[e] == '1'; a }
+    sum = 0
+    (0..array_of_binary_nos.length - 1).each do |i|
+      sum += 2**i if array_of_binary_nos[i] == '1'
+    end
+    sum
   end
 end
