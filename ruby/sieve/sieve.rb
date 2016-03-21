@@ -7,9 +7,10 @@ class Sieve
 
   def primes
     list_of_primes = []
-    Prime.each(@num) do |prime|
-      list_of_primes << prime
+    (2..@num).each do |i|
+      list_of_primes << i if Prime.prime?(i)
     end
     list_of_primes
   end
+
 end
