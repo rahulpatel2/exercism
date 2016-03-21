@@ -5,6 +5,6 @@ class Grains
   end
 
   def self.total
-    (1..64).inject { |a, e| a + 2**(e - 1) }
+    2**64 - 1
   end
 end
