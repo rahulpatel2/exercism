@@ -3,8 +3,8 @@ class ETL
   def self.transform(old)
     output = {}
     old.each do |key, value|
-      value.each do |i|
-        output[i.downcase] = key
+      (0..value.length - 1).each do |i|
+        output[value[i].downcase] = key
       end
     end
     output
