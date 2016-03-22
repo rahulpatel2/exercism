@@ -6,9 +6,10 @@ class School
   end
 
   def to_h
+    return @students if @students.empty?
     output = {}
-    @students.each do |_key, val|
-      output[val] = @students.inject([]) { |key, value| key << value[0] if value[1] == val; key }.sort
+    @students.each do |key, value|
+      output[value] = @students.reject { |k, v| v != value }.keys.sort
     end
     Hash[output.sort]
   end
@@ -18,6 +19,6 @@ class School
   end
 
   def grade(grade)
-    @students.inject([]) { |key, value| key << value[0] if value[1] == grade; key }.sort
+    @students.reject { |k, v| v != grade }.keys.sort
   end
 end
