@@ -5,7 +5,11 @@ class SumOfMultiples
   end
 
   def to(num)
-    (0..num - 1).inject { |a, e| a += e if @agrs.any? { |data| e % data == 0 }; a }
+    sum = 0
+    (0..num - 1).each do |i|
+      sum += i if @agrs.any? { |data| i % data == 0 }
+    end
+    sum
   end
 
   def self.to(num)
