@@ -6,10 +6,14 @@ class Series
 
   def slices(size)
     raise ArgumentError if @number_string.length < size
-    (0..@number_string.length - size).inject([]) { |a, e| a << get_inner_siles(size, e); a }
+    (0..@number_string.length - size).each_with_object([]) do |value, ouput|
+      ouput << get_inner_siles(size, value)
+    end
   end
 
   def get_inner_siles(size, length)
-    (length..length + size - 1).inject([]) { |a, e| a << @number_string[e].to_i; a }
+    (length..length + size - 1).each_with_object([]) do |value, ouput|
+      ouput << @number_string[value].to_i
+    end
   end
 end
