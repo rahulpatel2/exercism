@@ -3,6 +3,6 @@ require 'Prime'
 class PrimeFactors
   def self.for(num)
     output = Prime.prime_division(num)
-    output.inject([]) { |a, e| a.fill(e[0], a.size, e[1]); a }
+    output.each_with_object([]) { |e, a| a.fill(e[0], a.size, e[1]) }
   end
 end
