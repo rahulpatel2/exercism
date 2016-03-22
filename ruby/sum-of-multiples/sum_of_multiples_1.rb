@@ -13,6 +13,12 @@ class SumOfMultiples
   end
 
   def self.to(num)
-    (0..num - 1).inject { |a, e| a += e if e % 3 == 0 || e % 5 == 0; a }
+    sum = 0
+    if @args.nil?
+      (0..num - 1).each do |i|
+        sum += i if i % 3 == 0 || i % 5 == 0
+      end
+    end
+    sum
   end
 end
