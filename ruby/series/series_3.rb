@@ -12,6 +12,8 @@ class Series
   end
 
   def get_inner_siles(size, length)
-    @number_string[length..length + size - 1].split('').map(&:to_i)
+    (length..length + size - 1).each_with_object([]) do |value, ouput|
+      ouput << @number_string[value].to_i
+    end
   end
 end
