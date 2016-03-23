@@ -6,8 +6,9 @@ class Trinary
 
   def to_decimal
     return 0 if @binary_string =~ /[a-z]/
-    array_of_binary_nos = @binary_string.reverse!.split ''
-    size = array_of_binary_nos.length - 1
-    (0..size).inject(0) { |a, e| a + array_of_binary_nos[e].to_i * 3**e }
+    array_of_string = @binary_string.reverse!.split ''
+    sum = 0
+    array_of_string.each_with_index { |val, index| sum += val.to_i * 3**index }
+    sum
   end
 end
