@@ -19,7 +19,13 @@ class Crypto
   end
 
   def ciphertext
-    normalize_ciphertext.gsub!(/\s+/, '')
+    output = ''
+    (0...size).each do |i|
+      plaintext_segments.each do |segment|
+        output << segment[i] unless segment[i].nil?
+      end
+    end
+    output
   end
 
   def normalize_ciphertext
