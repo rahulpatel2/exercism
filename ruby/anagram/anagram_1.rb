@@ -6,8 +6,10 @@ class Anagram
   end
 
   def match(list_of_anagrams)
-    list_of_anagrams.each_with_object([]) do |val, obj|
-      obj << val if @word == val.downcase.chars.sort.join && @anagram != val.downcase
+    output = []
+    list_of_anagrams.each do |val|
+      output << val if @word == val.downcase.chars.sort.join && @anagram != val.downcase
     end
+    output
   end
 end
