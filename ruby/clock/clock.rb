@@ -1,12 +1,13 @@
 # Clock IN Ruby
 class Clock
-  def initialize(mintues)
-    @minutes = mintues
+  def initialize(mintues, opt, other)
+    @minutes = mintues + other if opt == '+'
+    @minutes = mintues - other if opt == '-'
   end
 
   def self.at(hours, min = 0)
     minutes = (hours * 60) + min
-    Clock.new(minutes)
+    Clock.new(minutes, '+', 0)
   end
 
   def ==(other)
@@ -14,11 +15,11 @@ class Clock
   end
 
   def +(other)
-    Clock.new(@minutes + other)
+    Clock.new(@minutes, '+', other)
   end
 
   def -(other)
-    Clock.new(@minutes - other)
+    Clock.new(@minutes, '-', other)
   end
 
   def to_s
