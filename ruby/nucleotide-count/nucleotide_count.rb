@@ -14,11 +14,8 @@ class Nucleotide
   end
 
   def histogram
-    {
-      'A' => count('A'),
-      'T' => count('T'),
-      'C' => count('C'),
-      'G' => count('G')
+    { 'A' => count('A'), 'T' => count('T'),
+      'C' => count('C'), 'G' => count('G')
     }
   end
 end
