@@ -14,13 +14,11 @@ class Matrix
   end
 
   def saddle_points
-    saddle_points_container = []
-    (0...@rows.length).each do |i|
+    (0...@rows.length).each_with_object([]) do |i, result|
       (0...@columns.length).each do |j|
-        saddle_points_container << [i, j] if saddle?(i, j)
+        result << [i, j] if saddle?(i, j)
       end
     end
-    saddle_points_container
   end
 
   def saddle?(i, j)
