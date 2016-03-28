@@ -6,9 +6,8 @@ class Triangle
 
   def kind
     raise TriangleError if @sides[2] >= @sides[0] + @sides[1]
-    return :equilateral if @sides.uniq.length == 1
-    return :isosceles if @sides.uniq.length == 2
-    :scalene
+    tringle_names = { 1 => :equilateral, 2 => :isosceles, 3 => :scalene }
+    tringle_names[@sides.uniq.length]
   end
 end
 class TriangleError < Exception
