@@ -1,6 +1,8 @@
+# Palindrome In Ruby
 class Palindromes
   def initialize(max_factor: 1, min_factor: 1)
-    @max_factor , @min_factor = max_factor, min_factor
+    @max_factor = max_factor
+    @min_factor = min_factor
   end
 
   def generate
@@ -20,23 +22,24 @@ class Palindromes
   def largest
     @facotr_for_max = []
     @factors.each do |arr|
-       @facotr_for_max << arr.sort if arr[0] * arr[1] == @products.max
+      @facotr_for_max << arr.sort if arr[0] * arr[1] == @products.max
     end
-    Palindrome.new(@products.max,@facotr_for_max.uniq)
+    Palindrome.new(@products.max, @facotr_for_max.uniq)
   end
 
- def smallest
+  def smallest
     @facotr_for_min = []
     @factors.each do |arr|
-       @facotr_for_min << arr.sort if arr[0] * arr[1] == @products.min
+      @facotr_for_min << arr.sort if arr[0] * arr[1] == @products.min
     end
-    Palindrome.new(@products.min,@facotr_for_min.uniq)
+    Palindrome.new(@products.min, @facotr_for_min.uniq)
   end
-
+  # Sub Palindrome class
   class Palindrome
     attr_reader :value, :factors
     def initialize(value, factors)
-      @value, @factors = value, factors
+      @value = value
+      @factors = factors
     end
   end
 end
