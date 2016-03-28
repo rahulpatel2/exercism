@@ -8,14 +8,12 @@ class SecretHandshake
   end
 
   def commands
+    result = []
     return [] if @decimal =~ /[^0-9]+/
-    return result.reverse if @decimal.to_s(2)[4] == '1'
-    result
-  end
-
-  def result
-    (0...@binary_string.length).each_with_object([]) do |i, output|
-      output << @commands_array[i] if @binary_string[i] == '1'
+    (0...@binary_string.length).each do |i|
+      result << @commands_array[i] if @binary_string[i] == '1'
     end
+    return result.reverse if @decimal >= 16
+    result
   end
 end
