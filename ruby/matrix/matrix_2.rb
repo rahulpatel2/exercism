@@ -8,8 +8,10 @@ class Matrix
   end
 
   def rows
-    @matrix_array.each_with_object([]) do |val, temp|
+    temp = []
+    @matrix_array.each do |val|
       temp << val.split(' ').map(&:to_i)
     end
+    temp
   end
 end
