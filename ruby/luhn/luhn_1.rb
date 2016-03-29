@@ -6,15 +6,17 @@ class Luhn
   end
 
   def addends
-    (0...@reverse_number.length).each_with_object([]) do |index, output|
+    output = []
+    @reverse_number.each_char.with_index do |char, index|
       if index.odd?
-        temp = @reverse_number[index].to_i * 2
+        temp = char.to_i * 2
         temp -= 9 if temp >= 10
         output << temp
       else
-        output << @reverse_number[index].to_i
+        output << char.to_i
       end
-    end.reverse
+    end
+    output.reverse
   end
 
   def checksum
