@@ -16,7 +16,7 @@ class GardenTest < Minitest::Test
   end
 
   def test_bobs_garden
-    #skip
+   # skip
     garden = Garden.new("VVCG\nVVRC")
     assert_equal [:clover, :grass, :radishes, :clover], garden.bob
   end
@@ -49,7 +49,7 @@ class TestFullGarden < Minitest::Test
   end
 
   def test_charlie
-    #skip
+   # skip
     assert_equal [:violets, :violets, :clover, :grass], garden.charlie
   end
 
@@ -69,7 +69,7 @@ class TestFullGarden < Minitest::Test
   end
 
   def test_ginny
-    #skip
+   # skip
     assert_equal [:clover, :grass, :grass, :clover], garden.ginny
   end
 
@@ -125,7 +125,7 @@ class DisorderedTest < Minitest::Test
   end
 
   def test_xander
-    # skip
+    #skip
     assert_equal [:radishes, :grass, :clover, :violets], garden.xander
   end
 end

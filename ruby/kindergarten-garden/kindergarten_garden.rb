@@ -7,6 +7,7 @@ class Garden
   attr_reader :students
 
   def initialize(plants, students = STUDENT_DATA)
+    @students = students.sort
     @plants = plants.split(/\n/)
     @first_row = @plants[0].split('')
     @second_row = @plants[1].split('')
@@ -14,12 +15,14 @@ class Garden
       @first_row[i] = PLANTS[@first_row[i]]
       @second_row[i] = PLANTS[@second_row[i]]
     end
-    students.sort.each_with_index do |student, index|
-      instance_eval "def #{student.downcase}; #{result(index * 2)}; end"
-    end
   end
 
   def result(i)
     [@first_row[i], @first_row[i + 1], @second_row[i], @second_row[i + 1]]
+  end
+
+  def method_missing(name)
+    name = name.to_s
+    result(@students.map!(&:downcase).index(name) * 2)
   end
 end
