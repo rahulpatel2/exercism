@@ -14,10 +14,8 @@ class Allergies
   end
 
   def list
-    output = []
-    score.each do |_, value|
-      output << value if allergic_to?(value)
+    score.each_with_object([]) do |(key, value), output|
+      output << value if @size & key > 0
     end
-    output
   end
 end
