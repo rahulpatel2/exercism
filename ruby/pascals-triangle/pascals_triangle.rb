@@ -6,15 +6,14 @@ class Triangle
 
   def rows
     return [[1]] if @size == 1
-    output = [[1]]
-    (1...@size).each do |i|
-      temp = [1]
-      (0...output[i - 1].length - 1).each do |j|
-        temp << output[i - 1][j] + output[i - 1][j + 1]
-      end
-      temp << 1
-      output << temp
+    (1...@size).each_with_object([[1]]) do |index, paskal_rows|
+      paskal_rows << generate(paskal_rows[index - 1])
     end
-    output
+  end
+
+  def generate(array)
+    (0...array.length - 1).each_with_object([1]) do |index, output|
+      output << array[index] + array[index + 1]
+    end << 1
   end
 end
