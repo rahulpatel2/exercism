@@ -1,26 +1,23 @@
 # Robot Simulater In Ruby
 class Robot
+  attr_accessor :bearing
   def initialize
     @directions = [:north, :east, :south, :west]
   end
 
   def orient(direction)
     raise ArgumentError unless @directions.include?(direction)
-    @current_direction = direction
-  end
-
-  def bearing
-    @current_direction
+    @bearing = direction
   end
 
   def turn_right
-    return @current_direction = :north if @current_direction == :west
-    @current_direction = @directions[@directions.index(@current_direction) + 1]
+    return @bearing = :north if @bearing == :west
+    @bearing = @directions[@directions.index(@bearing) + 1]
   end
 
   def turn_left
-    return @current_direction = :west if @current_direction == :north
-    @current_direction = @directions[@directions.index(@current_direction) - 1]
+    return @bearing = :west if @bearing == :north
+    @bearing = @directions[@directions.index(@bearing) - 1]
   end
 
   def at(x, y)
@@ -33,10 +30,10 @@ class Robot
   end
 
   def advance
-    @x += 1 if @current_direction == :east
-    @x -= 1 if @current_direction == :west
-    @y += 1 if @current_direction == :north
-    @y -= 1 if @current_direction == :south
+    @x += 1 if @bearing == :east
+    @x -= 1 if @bearing == :west
+    @y += 1 if @bearing == :north
+    @y -= 1 if @bearing == :south
   end
 end
 # Simulator class
@@ -57,9 +54,7 @@ class Simulator
   def evaluate(robot, str)
     ins = instructions(str)
     ins.each do |value|
-      robot.advance if value == :advance
-      robot.turn_left if value == :turn_left
-      robot.turn_right if value == :turn_right
+      robot.send(value.to_s)
     end
     robot
   end
