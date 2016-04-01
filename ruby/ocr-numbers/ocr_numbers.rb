@@ -37,13 +37,11 @@ class OCR
   end
 
   def get_digit(digits)
-    len = digits[0].length
-    decimal = []
-    (0...len).each do |j|
+    length = digits[0].length
+    (0...length).each_with_object([]) do |j, decimal|
       number = get_index(digits[0][j], digits[1][j], digits[2][j])
       decimal << number
-    end
-    decimal.join
+    end.join
   end
 
   def get_index(first, second, third)
