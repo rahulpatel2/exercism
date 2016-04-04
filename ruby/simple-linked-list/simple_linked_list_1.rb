@@ -12,7 +12,7 @@ class Element
 end
 # Link List In Ruby
 class SimpleLinkedList
-   attr_accessor :size, :head
+  attr_reader :size, :head
   def initialize
     @head = nil
     @size = 0
@@ -78,15 +78,14 @@ class SimpleLinkedList
   end
 
   def reverse
-    current_node = head
-    prev_node = nil
-    until current_node.nil?
-      next_node =  current_node.next
-      current_node.next = prev_node
-      prev_node = current_node
-      current_node = next_node
+    list = self
+    arr = to_a
+    list.size.times do
+      list.pop
     end
-    self.head = prev_node
-    self
+    arr.each do |i|
+      list.push(i)
+    end
+    list
   end
 end
