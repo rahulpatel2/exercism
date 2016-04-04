@@ -13,11 +13,12 @@ class Translation
     raise InvalidCodonError
   end
 
-  def self.of_rna(strand)
+  def self.of_rna(str)
+    strand = str.scan(/.{1,3}/)
     proteins = []
-    strand.scan(/.{1,3}/).each do |codon|
+    strand.each do |codon|
+      proteins << of_codon(codon) if of_codon(codon) != 'STOP'
       break if of_codon(codon) == 'STOP'
-      proteins << of_codon(codon)
     end
     proteins
   end
