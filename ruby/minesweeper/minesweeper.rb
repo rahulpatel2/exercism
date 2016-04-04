@@ -1,11 +1,8 @@
 # Mines Sweeper In Ruby
 class Board
   def self.transform(input)
-    matrix = []
-    input.each do |row|
-      matrix << row.split('')
-    end
-    validate(matrix)
+    matrix = input.map { |row| row.chars }
+    border_validate(matrix) && length_validate(matrix) && char_validate(matrix)
     minesweeper(matrix)
   end
 
@@ -19,7 +16,7 @@ class Board
         end
       end
     end
-    to_string(matrix)
+    matrix.map { |row| row.join }
   end
 
   def self.count(matrix, i, j)
@@ -31,20 +28,6 @@ class Board
       count += 1 if value.to_s == '*'
     end
     count
-  end
-
-  def self.to_string(matrix)
-    output = []
-    matrix.each do |row|
-      output << row.join
-    end
-    output
-  end
-
-  def self.validate(matrix)
-    length_validate(matrix)
-    border_validate(matrix)
-    char_validate(matrix)
   end
 
   def self.border_validate(matrix)
@@ -68,5 +51,4 @@ class Board
     end
   end
 end
-class ValueError < StandardError
-end
+ValueError = Class.new(StandardError)
