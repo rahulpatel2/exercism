@@ -2,16 +2,17 @@
 class TwelveDays
   VERSION = 1
   def self.song
-    @lines = { 2 => 'second', 3 => 'third', 4 => 'fourth', 5 => 'fifth',
-               6 => 'sixth', 7 => 'seventh', 8 => 'eighth', 9 => 'ninth',
-               10 => 'tenth', 11 => 'eleventh', 12 => 'twelfth' }.freeze
-
-    @variations = { 2 => 'two Turtle Doves', 3 => 'three French Hens',
-                    4 => 'four Calling Birds', 5 => 'five Gold Rings',
-                    6 => 'six Geese-a-Laying', 7 => 'seven Swans-a-Swimming',
-                    8 => 'eight Maids-a-Milking', 9 => 'nine Ladies Dancing',
-                    10 => 'ten Lords-a-Leaping', 11 => 'eleven Pipers Piping',
-                    12 => 'twelve Drummers Drumming' }.freeze
+    @variations = { 'second' => 'two Turtle Doves',
+                    'third' => 'three French Hens',
+                    'fourth' => 'four Calling Birds',
+                    'fifth' => 'five Gold Rings',
+                    'sixth' => 'six Geese-a-Laying',
+                    'seventh' => 'seven Swans-a-Swimming',
+                    'eighth' => 'eight Maids-a-Milking',
+                    'ninth' => 'nine Ladies Dancing',
+                    'tenth' => 'ten Lords-a-Leaping',
+                    'eleventh' => 'eleven Pipers Piping',
+                    'twelfth' => 'twelve Drummers Drumming' }.freeze
     song = 'On the first day of Christmas my true love gave to me, a Partridge in a Pear Tree.'
     song << "\n" << "\n"
     (2..12).each do |i|
@@ -23,10 +24,11 @@ class TwelveDays
 
   def self.generate(row)
     temp = ''
+    row_numbers = @variations.keys
     r = row..2
     r.first.downto(r.last).each do |index|
-      temp =  temp + @variations[index] + ', '
+      temp =  temp + @variations[row_numbers[index - 2]] + ', '
     end
-    "On the #{@lines[row]} day of Christmas my true love gave to me, " + temp + 'and a Partridge in a Pear Tree.'
+    "On the #{row_numbers[row - 2]} day of Christmas my true love gave to me, " + temp + 'and a Partridge in a Pear Tree.'
   end
 end

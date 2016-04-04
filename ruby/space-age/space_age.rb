@@ -10,7 +10,7 @@ class SpaceAge
     @seconds = seconds
   end
 
-  PLANETS.each do |age_on_plane, period|
-    define_method(age_on_plane) { @seconds.to_f / (31_557_600 * period) }
+  PLANETS.each do |age_on_planet, period|
+    define_method(age_on_planet) { @seconds.to_f / (31_557_600 * period) }
   end
 end
