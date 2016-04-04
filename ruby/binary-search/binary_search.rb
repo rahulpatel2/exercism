@@ -10,15 +10,12 @@ class BinarySearch
     @list.length / 2
   end
 
-  def search_for(num)
-    left = 0
-    right = @list.length - 1
-    while left < right
-      mid = (left + right) / 2
-      left = mid + 1 if num > @list[mid]
-      right = mid - 1 if num < @list[mid]
-      return mid if num == @list[mid]
-    end
-    raise RuntimeError
+  def search_for(num, lowest = 0, highest = 0)
+    highest = @list.length if highest == 0
+    mid = (lowest + highest) / 2
+    return mid if @list[mid] == num
+    raise RuntimeError if mid == 0
+    return search_for(num, lowest, mid) if @list[mid] > num
+    return search_for(num, mid, highest) if @list[mid] < num
   end
 end
